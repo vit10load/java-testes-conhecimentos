@@ -61,15 +61,20 @@ public class Main {
             }
         }
 
-        double media = soma / diasValidos;
+        if (diasValidos > 0) {
+            double media = soma / diasValidos;
 
-        for (Faturamento f : faturamentos) {
-            if (f.valor > media) diasAcimaMedia++;
+            for (Faturamento f : faturamentos) {
+                if (f.valor > 0 && f.valor > media) {
+                    diasAcimaMedia++;
+                }
+            }
+
+            System.out.println("Menor faturamento: " + menor);
+            System.out.println("Maior faturamento: " + maior);
+            System.out.println("Dias acima da média: " + diasAcimaMedia);
+        } else {
+            System.out.println("Não há dias com faturamento válido para cálculo da média.");
         }
-
-        System.out.println("Menor faturamento: " + menor);
-        System.out.println("Maior faturamento: " + maior);
-        System.out.println("Dias acima da média: " + diasAcimaMedia);
-
     }
 }
